@@ -62,7 +62,9 @@ jobs:
           pip install pytest flake8
 
       - name: Lint Python files
-        run: flake8 . --ignore=E501,W503
+        run: |
+          flake8 . --ignore=E501,W503 --count --statistics --exit-zero
+          flake8 . --ignore=E501,W503
 
       - name: Run tests
-        run: pytest --maxfail=1 --disable-warnings -q
+        run: pytest -v --maxfail=1 --disable-warnings
